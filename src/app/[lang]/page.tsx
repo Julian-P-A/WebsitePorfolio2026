@@ -7,6 +7,7 @@ import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getSiteUrl } from "@/lib/site-url";
+import { contactEmail, socials } from "@/lib/data";
 
 const seo = {
   es: {
@@ -46,12 +47,42 @@ export async function generateMetadata({
       title,
       description,
     },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
-export default function Home() {
+export default async function Home({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params;
+  if (lang !== "es" && lang !== "en") notFound();
+
+  const { title, description } = seo[lang];
+  const pageUrl = new URL(`/${lang}`, getSiteUrl()).toString();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: {
+      "@type": "Person",
+      name: "Julian Pinzón",
+      jobTitle: title,
+      description,
+      url: pageUrl,
+      email: `mailto:${contactEmail}`,
+      sameAs: Object.values(socials),
+    },
+  };
+
   return (
     <>
+      {/* JSON.stringify of our own static data — no user input, the sanctioned pattern for JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main className="overflow-x-hidden">
         <Hero />

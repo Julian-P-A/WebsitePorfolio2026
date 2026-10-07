@@ -66,23 +66,29 @@ export function About() {
                   : "1px solid var(--border-subtle)",
               }}
             >
-              <span className="font-mono text-xs opacity-70">({skill.n})</span>
-              <h3
-                className="font-heading font-semibold"
-                style={{
-                  fontSize: 28,
-                  lineHeight: 1,
-                  letterSpacing: "-.035em",
-                  color: skill.active ? "var(--ink)" : "var(--cream)",
-                }}
-              >
-                {skill.title}
-              </h3>
-              <p className="flex-1 font-sans text-[15px] leading-[1.5]">{skill.desc}</p>
+              <Reveal as="span" delay={0.1 * i + 0.1} className="inline-block font-mono text-xs opacity-70">({skill.n})</Reveal>
+              <Reveal delay={0.1 * i + 0.18}>
+                <h3
+                  className="font-heading font-semibold"
+                  style={{
+                    fontSize: 28,
+                    lineHeight: 1,
+                    letterSpacing: "-.035em",
+                    color: skill.active ? "var(--ink)" : "var(--cream)",
+                  }}
+                >
+                  {skill.title}
+                </h3>
+              </Reveal>
+              <Reveal delay={0.1 * i + 0.26} className="flex-1">
+                <p className="font-sans text-[15px] leading-[1.5]">{skill.desc}</p>
+              </Reveal>
               <div className="flex flex-wrap gap-1.5">
-                {skill.tags.map((tag) => (
-                  <span
+                {skill.tags.map((tag, tagIndex) => (
+                  <Reveal
+                    as="span"
                     key={tag}
+                    delay={0.1 * i + 0.34 + tagIndex * 0.05}
                     className="inline-flex h-[30px] items-center rounded-full px-[13px] font-mono text-xs lowercase tracking-[.02em]"
                     style={{
                       border: skill.active
@@ -91,7 +97,7 @@ export function About() {
                     }}
                   >
                     {tag}
-                  </span>
+                  </Reveal>
                 ))}
               </div>
             </div>

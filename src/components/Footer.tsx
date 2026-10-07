@@ -7,8 +7,10 @@ import {
   FaLinkedinIn,
   FaGithub,
 } from "react-icons/fa6";
+import { Heart } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 import { socials } from "@/lib/data";
+import { Reveal } from "./Reveal";
 
 const socialLinks = [
   { icon: FaInstagram, label: "Instagram", href: socials.instagram },
@@ -27,27 +29,32 @@ export function Footer() {
         className="mx-auto"
         style={{ maxWidth: "var(--container-max)", padding: "0 var(--gutter) 32px" }}
       >
-        <div
-          className="font-heading overflow-hidden whitespace-nowrap border-t-[1.5px] border-ink font-bold"
-          style={{
-            fontSize: "clamp(64px,14vw,220px)",
-            lineHeight: 0.8,
-            letterSpacing: "-.06em",
-            paddingTop: 36,
-          }}
-        >
-          Julian Pinzón.
-        </div>
+        <Reveal>
+          <div
+            className="font-heading overflow-hidden whitespace-nowrap border-t-[1.5px] border-ink font-bold"
+            style={{
+              fontSize: "var(--fs-footer)",
+              lineHeight: 0.8,
+              letterSpacing: "-.06em",
+              paddingTop: 36,
+            }}
+          >
+            Julian Pinzón.
+          </div>
+        </Reveal>
 
-        <div
-          className="flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[.12em]"
-          style={{ marginTop: 32 }}
+        <Reveal
+          delay={0.15}
+          className="mt-8 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[.12em]"
         >
-          <span>{t.footer.rights}</span>
+          <Reveal as="span" delay={0.22} className="inline-flex items-center gap-1.5">
+            {t.footer.rights}
+            <Heart className="h-3 w-3" fill="var(--ink)" />
+          </Reveal>
           <div className="flex gap-2">
-            {socialLinks.map(({ icon: Icon, label, href }) => (
+            {socialLinks.map(({ icon: Icon, label, href }, i) => (
+              <Reveal as="span" key={label} delay={0.3 + i * 0.07} className="inline-flex">
               <a
-                key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -57,9 +64,10 @@ export function Footer() {
               >
                 <Icon className="h-[17px] w-[17px]" />
               </a>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

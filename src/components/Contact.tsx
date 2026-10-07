@@ -17,6 +17,7 @@ export function Contact() {
   const [budget, setBudget] = useState("");
   const [project, setProject] = useState("");
   const [consent, setConsent] = useState(false);
+  const [botcheck, setBotcheck] = useState(false);
   const [error, setError] = useState("");
   const [submitError, setSubmitError] = useState("");
   const [isSending, setIsSending] = useState(false);
@@ -33,6 +34,11 @@ export function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (isSending || !consent) return;
+    if (botcheck) {
+      setToastOn(true);
+      setTimeout(() => setToastOn(false), 4000);
+      return;
+    }
     setSubmitError("");
     if (!EMAIL_RE.test(email.trim())) {
       setError(t.contact.formEmailError);
@@ -64,7 +70,7 @@ export function Contact() {
           ...(budget ? { budget } : {}),
           message: project.trim(),
           language: locale,
-          botcheck: false,
+          botcheck,
         }),
       });
       const result = (await response.json()) as { success?: boolean };
@@ -97,21 +103,28 @@ export function Contact() {
             padding: "110px var(--gutter) 80px",
           }}
         >
-          <Reveal className="flex flex-col gap-7">
-            <span className="font-mono text-xs uppercase tracking-[.14em]">
-              ({t.contact.index}) {t.contact.eyebrow}
-            </span>
-            <h2
-              className="font-heading font-bold"
-              style={{ fontSize: "var(--fs-d1)", lineHeight: 0.88, letterSpacing: "-.055em" }}
-            >
-              {t.contact.title.replace("?", "")}
-              <em className="italic-accent not-italic">?</em>
-            </h2>
-            <p className="max-w-[420px] font-sans text-lg leading-[1.5]">
-              {t.contact.description}
-            </p>
+          <div className="flex flex-col gap-7">
+            <Reveal>
+              <span className="font-mono text-xs uppercase tracking-[.14em]">
+                ({t.contact.index}) {t.contact.eyebrow}
+              </span>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2
+                className="font-heading font-bold"
+                style={{ fontSize: "var(--fs-d1)", lineHeight: 0.88, letterSpacing: "-.055em" }}
+              >
+                {t.contact.title.replace("?", "")}
+                <em className="italic-accent not-italic">?</em>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="max-w-[420px] font-sans text-lg leading-[1.5]">
+                {t.contact.description}
+              </p>
+            </Reveal>
             <div className="flex items-center gap-2.5">
+              <Reveal delay={0.3}>
               <a
                 href={`mailto:${contactEmail}`}
                 className="font-heading font-semibold tracking-[-.02em] text-ink"
@@ -119,14 +132,15 @@ export function Contact() {
               >
                 {contactEmail}
               </a>
-              <span className="group relative inline-flex">
+              </Reveal>
+              <Reveal as="span" delay={0.38} className="group relative inline-flex">
                 <button
                   type="button"
                   onClick={handleCopy}
                   onMouseEnter={() => setTooltipOpen(true)}
                   onMouseLeave={() => setTooltipOpen(false)}
                   aria-label={t.contact.copyTooltip}
-                  className="grid h-10 w-10 place-items-center rounded-full border-[1.5px] transition-transform hover:-rotate-[8deg]"
+                  className="grid h-11 w-11 place-items-center rounded-full border-[1.5px] transition-transform hover:-rotate-[8deg]"
                   style={{ borderColor: "rgba(13,13,11,.3)" }}
                 >
                   <Copy className="h-[17px] w-[17px]" />
@@ -141,16 +155,30 @@ export function Contact() {
                 >
                   {t.contact.copyTooltip}
                 </span>
-              </span>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
 
-          <form
+          <Reveal
+            as="form"
+            delay={0.25}
             onSubmit={handleSubmit}
             className="flex flex-col gap-6 rounded-[24px] bg-ink p-9 text-cream"
             style={{ boxShadow: "8px 8px 0 var(--ink)", outline: "1.5px solid var(--ink)" }}
           >
+            <input
+              type="checkbox"
+              name="botcheck"
+              checked={botcheck}
+              onChange={(e) => setBotcheck(e.target.checked)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: "absolute", opacity: 0, height: 0, width: 0, pointerEvents: "none" }}
+            />
+
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <Reveal delay={0.35}>
               <label className="flex flex-col gap-2.5">
                 <span className="font-mono text-[11px] uppercase tracking-[.14em] text-paper-400">
                   {t.contact.formName}
@@ -164,6 +192,8 @@ export function Contact() {
                   className="h-[52px] border-0 border-b-[1.5px] border-border-default bg-transparent font-sans text-xl tracking-[-.01em] outline-none placeholder:text-paper-400/60 focus:border-lime"
                 />
               </label>
+              </Reveal>
+              <Reveal delay={0.43}>
               <label className="flex flex-col gap-2.5">
                 <span className="font-mono text-[11px] uppercase tracking-[.14em] text-paper-400">
                   {t.contact.formEmail}
@@ -186,8 +216,10 @@ export function Contact() {
                   </span>
                 )}
               </label>
+              </Reveal>
             </div>
 
+            <Reveal delay={0.51}>
             <label className="flex flex-col gap-2.5">
               <span className="font-mono text-[11px] uppercase tracking-[.14em] text-paper-400">
                 {t.contact.formBudget}
@@ -207,7 +239,9 @@ export function Contact() {
                 ))}
               </select>
             </label>
+            </Reveal>
 
+            <Reveal delay={0.59}>
             <label className="flex flex-col gap-2.5">
               <span className="font-mono text-[11px] uppercase tracking-[.14em] text-paper-400">
                 {t.contact.formProject}
@@ -221,8 +255,10 @@ export function Contact() {
                 className="resize-y border-0 border-b-[1.5px] border-border-default bg-transparent py-3 font-sans text-xl leading-[1.45] outline-none placeholder:text-paper-400/60 focus:border-lime"
               />
             </label>
+            </Reveal>
 
             <div className="flex flex-wrap items-center justify-between gap-4">
+              <Reveal delay={0.67}>
               <label className="inline-flex items-center gap-3 font-sans text-[15px]">
                 <span className="relative inline-flex">
                   <input
@@ -253,7 +289,9 @@ export function Contact() {
                 </span>
                 {t.contact.consent}
               </label>
+              </Reveal>
 
+              <Reveal delay={0.75}>
               <button
                 type="submit"
                 disabled={!consent || isSending}
@@ -263,13 +301,19 @@ export function Contact() {
                 {isSending ? t.contact.sending : t.contact.submit}
                 <ArrowRight className="h-[18px] w-[18px]" />
               </button>
+              </Reveal>
             </div>
+            {!consent && !isSending && (
+              <p className="-mt-2 font-sans text-[13px] text-paper-400">
+                {t.contact.consentRequired}
+              </p>
+            )}
             {submitError && (
               <p role="alert" className="font-sans text-sm text-[#FF8575]">
                 {submitError}
               </p>
             )}
-          </form>
+          </Reveal>
         </div>
       </div>
 

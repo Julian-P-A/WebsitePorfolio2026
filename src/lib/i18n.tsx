@@ -10,6 +10,8 @@ export interface Dictionary {
     about: string;
     contact: string;
     cta: string;
+    openMenu: string;
+    closeMenu: string;
   };
   hero: {
     badge: string;
@@ -33,6 +35,9 @@ export interface Dictionary {
     imagePlaceholder: string;
     projectLabel: string;
     visitSite: string;
+    ctaTitle: string;
+    ctaAccent: string;
+    ctaLabel: string;
   };
   about: {
     index: string;
@@ -70,6 +75,7 @@ export interface Dictionary {
     formProject: string;
     formProjectPh: string;
     consent: string;
+    consentRequired: string;
     submit: string;
     sending: string;
     toastTitle: string;
@@ -87,6 +93,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       about: "Sobre mí",
       contact: "Contacto",
       cta: "Hablemos",
+      openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
     },
     hero: {
       badge: "Disponible · Oct 2026",
@@ -117,6 +125,9 @@ export const dictionary: Record<Locale, Dictionary> = {
       imagePlaceholder: "imagen del proyecto",
       projectLabel: "Proyecto",
       visitSite: "Visitar sitio",
+      ctaTitle: "¿Construimos algo",
+      ctaAccent: "juntos?",
+      ctaLabel: "Hablemos",
     },
     about: {
       index: "02",
@@ -170,17 +181,18 @@ export const dictionary: Record<Locale, Dictionary> = {
       formSetupError: "El formulario aún no está configurado. Escríbeme al correo de la izquierda.",
       formBudget: "Presupuesto",
       formBudgetPh: "Elige un rango",
-      budgetOptions: ["< 3k €", "3–8k €", "8k € +"],
+      budgetOptions: ["< 500 USD", "500–1k USD", "1–3k USD", "3k+ USD"],
       formProject: "Proyecto",
       formProjectPh: "Tengo una idea…",
       consent: "Acepto la política de privacidad",
+      consentRequired: "Marca la casilla para poder enviar",
       submit: "Enviar",
       sending: "Enviando…",
       toastTitle: "¡Mensaje enviado!",
       toastMessage: "Te respondo en 24–48 h.",
     },
     footer: {
-      rights: "© 2026 — Diseñado y programado a mano",
+      rights: "© 2026 — Diseñado y desarrollado con",
     },
   },
   en: {
@@ -189,6 +201,8 @@ export const dictionary: Record<Locale, Dictionary> = {
       about: "About",
       contact: "Contact",
       cta: "Let's talk",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       badge: "Available · Oct 2026",
@@ -219,6 +233,9 @@ export const dictionary: Record<Locale, Dictionary> = {
       imagePlaceholder: "project image",
       projectLabel: "Project",
       visitSite: "Visit site",
+      ctaTitle: "Shall we build something",
+      ctaAccent: "together?",
+      ctaLabel: "Let's talk",
     },
     about: {
       index: "02",
@@ -272,17 +289,18 @@ export const dictionary: Record<Locale, Dictionary> = {
       formSetupError: "The form is not configured yet. Please email me using the address on the left.",
       formBudget: "Budget",
       formBudgetPh: "Choose a range",
-      budgetOptions: ["< €3k", "€3–8k", "€8k +"],
+      budgetOptions: ["< $500", "$500–1k", "$1–3k", "$3k +"],
       formProject: "Project",
       formProjectPh: "I have an idea…",
       consent: "I agree to the privacy policy",
+      consentRequired: "Check the box to send",
       submit: "Send",
       sending: "Sending…",
       toastTitle: "Message sent!",
       toastMessage: "I'll reply within 24–48 h.",
     },
     footer: {
-      rights: "© 2026 — Designed and coded by hand",
+      rights: "© 2026 — Designed and developed with",
     },
   },
 };
