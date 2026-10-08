@@ -41,7 +41,7 @@ export const projects: Project[] = [
     id: "sisteviajes",
     index: "02",
     title: "Sisteviajes",
-    coverImage: "/images/sisteviajes-browser.png",
+    coverImage: "/images/sisteviajes-browser.webp",
     coverAlt: {
       es: "Captura del sitio de Sisteviajes en una ventana de navegador",
       en: "Screenshot of the Sisteviajes website in a browser window",

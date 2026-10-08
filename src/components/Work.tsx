@@ -49,9 +49,8 @@ function ProjectCardView({
               src={project.coverImage}
               alt={project.coverAlt?.[locale] ?? ""}
               fill
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 768px) 620px, 100vw"
               priority={priority}
-              unoptimized
               className="scale-[1.2] object-contain transition-transform duration-500 group-hover:scale-[1.26]"
             />
           </div>
@@ -65,7 +64,7 @@ function ProjectCardView({
                 src={project.coverImage}
                 alt={project.coverAlt?.[locale] ?? ""}
                 fill
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 768px) 620px, 100vw"
                 priority={priority}
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.05]"
               />

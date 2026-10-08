@@ -75,7 +75,7 @@ export function Hero() {
               }}
             >
               <Image
-                src="/images/profile.png"
+                src="/images/profile.webp"
                 alt="Julian Pinzón"
                 fill
                 sizes="(min-width: 1024px) 300px, 60vw"
