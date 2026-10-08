@@ -8,8 +8,7 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import { LanguageProvider, type Locale } from "@/lib/i18n";
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { Cursor } from "@/components/Cursor";
+import { ClientEffects } from "@/components/ClientEffects";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-heading",
@@ -55,8 +54,7 @@ export default async function RootLayout({
       className={`${bricolage.variable} ${instrumentSerif.variable} ${geist.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ink text-paper-200 font-sans">
-        <SmoothScroll />
-        <Cursor />
+        <ClientEffects />
         <LanguageProvider locale={lang}>{children}</LanguageProvider>
         <Analytics />
       </body>
