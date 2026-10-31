@@ -35,10 +35,10 @@ function ProjectCardView({
         >
         {project.coverImage && project.coverSubtitle && (
           <div className={`absolute z-10 flex flex-col gap-1.5 ${project.coverVariant === "floating-browser" ? "right-[7%] top-[7%] items-end text-right sm:top-[18%]" : "left-5 top-[18%] sm:left-7"}`}>
-            <Reveal as="span" delay={delay + 0.05} className="font-heading text-[26px] font-bold leading-none tracking-[-.05em] text-cream sm:text-[34px]">
-              {project.title}<span className="text-lime">.</span>
+            <Reveal as="span" delay={delay + 0.05} className={`font-heading text-[26px] font-bold leading-none tracking-[-.05em] ${project.color === "lime" ? "text-ink" : "text-cream"} sm:text-[34px]`}>
+              {project.title}<span className={project.color === "lime" ? "text-ink" : "text-lime"}>.</span>
             </Reveal>
-            <Reveal as="span" delay={delay + 0.08} className={`font-mono text-[10px] font-medium uppercase leading-[1.45] tracking-[.12em] text-cream/85 sm:text-xs ${project.coverVariant === "floating-browser" ? "max-w-[230px]" : "max-w-[165px] sm:max-w-[230px]"}`}>
+            <Reveal as="span" delay={delay + 0.08} className={`font-mono text-[10px] font-medium uppercase leading-[1.45] tracking-[.12em] ${project.color === "lime" ? "text-ink/85" : "text-cream/85"} sm:text-xs ${project.coverVariant === "floating-browser" ? "max-w-[230px]" : "max-w-[165px] sm:max-w-[230px]"}`}>
               {project.coverSubtitle[locale]}
             </Reveal>
           </div>

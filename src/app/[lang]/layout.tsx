@@ -1,39 +1,8 @@
 import { notFound } from "next/navigation";
-import {
-  Bricolage_Grotesque,
-  Instrument_Serif,
-  Geist,
-  JetBrains_Mono,
-} from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import { LanguageProvider, type Locale } from "@/lib/i18n";
 import { ClientEffects } from "@/components/ClientEffects";
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-accent",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["italic", "normal"],
-});
-
-const geist = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 
 const locales: Locale[] = ["es", "en"];
 
@@ -49,10 +18,23 @@ export default async function RootLayout({
   if (lang !== "es" && lang !== "en") notFound();
 
   return (
-    <html
-      lang={lang}
-      className={`${bricolage.variable} ${instrumentSerif.variable} ${geist.variable} ${jetbrainsMono.variable} h-full antialiased`}
-    >
+    <html lang={lang} className="h-full antialiased">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/bricolage-grotesque-latin-variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/geist-latin-variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-ink text-paper-200 font-sans">
         <ClientEffects />
         <LanguageProvider locale={lang}>{children}</LanguageProvider>

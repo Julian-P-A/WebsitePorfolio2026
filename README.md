@@ -26,7 +26,10 @@ time. The form shows a success message only when Web3Forms accepts the submissio
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Fonts are declared with CSS `@font-face` in `src/app/fonts.css`. Bricolage
+Grotesque, Geist, Instrument Serif, and JetBrains Mono are bundled in
+`public/fonts` with their OFL license. Font loading uses local files during
+development, builds, and browser visits.
 
 ## Learn More
 
