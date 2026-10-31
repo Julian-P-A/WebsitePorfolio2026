@@ -180,22 +180,24 @@ export function Work() {
 
       <Reveal delay={0.25}>
         <div
-          className="mt-11 grid w-full grid-cols-2 gap-1 rounded-[24px] border-[1.5px] border-border-default p-1 sm:inline-flex sm:w-auto sm:rounded-full"
+          className="mt-11 grid w-full grid-cols-2 gap-2 rounded-[28px] border-[1.5px] border-border-default p-1 sm:inline-flex sm:w-auto sm:gap-1 sm:rounded-full"
         >
           {t.work.filters.map((f, i) => {
             const on = f.value === filter;
             return (
-              <Reveal as="span" key={f.value} delay={0.32 + i * 0.08} className="inline-flex">
+              <Reveal as="span" key={f.value} delay={0.32 + i * 0.08} className="inline-flex min-w-0">
                 <button
+                  type="button"
+                  aria-pressed={on}
                   onClick={() => setFilter(f.value)}
-                  className="inline-flex h-9 items-center gap-1 rounded-full px-2 font-sans text-[13px] font-medium transition-colors sm:gap-2 sm:px-4 sm:text-sm"
+                  className="inline-flex h-11 w-full min-w-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-2 font-sans text-[13px] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-lime sm:h-9 sm:w-auto sm:gap-2 sm:px-4 sm:text-sm"
                   style={{
                     background: on ? "var(--cream)" : "transparent",
                     color: on ? "var(--ink)" : "var(--paper-400)",
                   }}
                 >
                   {f.label}
-                  <span className="font-mono text-[10px] opacity-70">
+                  <span className="shrink-0 font-mono text-[10px] opacity-70">
                     {String(counts[f.value]).padStart(2, "0")}
                   </span>
                 </button>
