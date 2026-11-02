@@ -1,47 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio 2026 — Julian Pinzón
 
-## Getting Started
+Portafolio personal desarrollado con **Next.js, React y TypeScript**, enfocado en presentar mi trabajo como **Diseñador UX/UI y Desarrollador Front-end**.
 
-First, run the development server:
+El proyecto combina diseño de interfaces, desarrollo web moderno, animaciones e interacciones para ofrecer una experiencia visual atractiva, intuitiva y adaptable a diferentes dispositivos.
+
+## Tecnologías utilizadas
+
+- **Next.js 16** — Framework para desarrollo web con React.
+- **React 19** — Construcción de interfaces basadas en componentes.
+- **TypeScript** — Desarrollo con tipado estático.
+- **Tailwind CSS 4** — Estilización y diseño responsive.
+- **Framer Motion** — Animaciones y transiciones.
+- **Lenis** — Smooth scrolling.
+- **Lucide React** — Iconografía.
+- **Web3Forms** — Integración del formulario de contacto.
+- **Vercel Analytics** — Analítica del sitio web.
+
+## Características
+
+- Diseño responsive para dispositivos móviles, tablets y escritorio.
+- Interfaz disponible en español e inglés.
+- Sección de proyectos con filtros interactivos.
+- Presentación de habilidades y experiencia profesional.
+- Animaciones y efectos de interacción.
+- Formulario de contacto con validación.
+- Optimización SEO mediante metadatos y Open Graph.
+- Integración con Vercel Analytics.
+- Componentes reutilizables y estructura modular.
+
+## Proyectos destacados
+
+El portafolio presenta una selección de trabajos relacionados con diseño UX/UI, desarrollo front-end y productos digitales.
+
+Entre ellos:
+
+- **TuMiniu:** plataforma SaaS para menús digitales.
+- **Sisteviajes:** sitio web para una agencia de viajes personalizados.
+- **Elixir Parfum:** comercio electrónico de perfumería.
+- **Mercado:** proyecto de diseño UX/UI.
+
+Cada proyecto presenta información sobre las tecnologías utilizadas, su categoría y, cuando está disponible, un enlace al sitio web.
+
+## Instalación y ejecución
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Julian-P-A/WebsitePorfolio2026.git
+```
+
+### 2. Acceder al directorio
+
+```bash
+cd WebsitePorfolio2026
+```
+
+### 3. Instalar dependencias
+
+```bash
+npm ci
+```
+
+### 4. Configurar variables de entorno
+
+Crear un archivo `.env.local` a partir de `.env.example` y configurar la clave de Web3Forms para habilitar el formulario de contacto:
+
+```env
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=tu_clave
+```
+
+### 5. Ejecutar el proyecto
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-## Contact form
+La página principal redirige a `/es`. La versión en inglés está disponible en `/en`.
 
-The contact form sends directly to Web3Forms. Create a Web3Forms access key for
-`julian.jcpa@gmail.com`, then set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in
-`.env.local` and in the Vercel project's environment variables. Redeploy after
-setting it on Vercel, since public environment variables are included at build
-time. The form shows a success message only when Web3Forms accepts the submission.
+## Scripts disponibles
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Inicia el servidor de desarrollo |
+| `npm run build` | Genera la compilación de producción |
+| `npm run start` | Ejecuta la versión de producción |
+| `npm run lint` | Ejecuta ESLint |
 
-Fonts are declared with CSS `@font-face` in `src/app/fonts.css`. Bricolage
-Grotesque, Geist, Instrument Serif, and JetBrains Mono are bundled in
-`public/fonts` with their OFL license. Font loading uses local files during
-development, builds, and browser visits.
+## Estructura del proyecto
 
-## Learn More
+```text
+WebsitePorfolio2026/
+├── public/
+│   ├── fonts/
+│   └── images/
+├── src/
+│   ├── app/
+│   │   ├── [lang]/
+│   │   ├── globals.css
+│   │   └── fonts.css
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Work.tsx
+│   │   ├── About.tsx
+│   │   ├── Contact.tsx
+│   │   └── ...
+│   └── lib/
+│       ├── data.ts
+│       ├── i18n.tsx
+│       └── site-url.ts
+├── package.json
+├── next.config.ts
+└── tsconfig.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Despliegue
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El proyecto puede desplegarse en **Vercel**, utilizando su integración con Next.js.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para habilitar el formulario de contacto en producción, es necesario configurar `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` en las variables de entorno y realizar un nuevo despliegue.
 
-## Deploy on Vercel
+## Autor
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Julian Pinzón**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Diseñador UX/UI & Desarrollador Front-end.
+
+- [GitHub](https://github.com/Julian-P-A)
+- [LinkedIn](https://www.linkedin.com/in/julianjcpa/)
+- [Behance](https://www.behance.net/julianariza3)
+
+---
+
+Desarrollado como mi portafolio profesional para 2026, integrando diseño, tecnología y experiencia de usuario.
